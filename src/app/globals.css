@@ -1,8 +1,30 @@
 @import "tailwindcss";
 
-:root{
-  --background:#09090B;
-  --foreground:#F8FAFC;
+:root {
+  /* Background */
+  --background: #09090b;
+  --surface: #18181b;
+  --card: #1f1f23;
+
+  /* Text */
+  --foreground: #f8fafc;
+  --muted: #a1a1aa;
+
+  /* Brand */
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+
+  /* Accent */
+  --success: #22c55e;
+  --cyan: #06b6d4;
+
+  /* Border */
+  --border: #2a2a2e;
+
+  /* Radius */
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
 }
 
 body{

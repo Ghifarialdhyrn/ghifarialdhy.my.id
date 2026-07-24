@@ -32,3 +32,13 @@ body{
   color:var(--foreground);
   overflow-x:hidden;
 }
+
+.glass {
+  background: rgba(24, 24, 27, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}

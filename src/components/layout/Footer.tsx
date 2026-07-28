@@ -13,7 +13,7 @@ export default function Footer() {
             Ghifarialdhy Rahmansyah Nitikusumah
           </h3>
 
-          <p className="mt-2 text-zinc-500">Frontend Web Developer</p>
+          <p className="mt-2 text-zinc-500">Fullstack Web Developer</p>
         </div>
 
         <div className="flex items-center gap-6">

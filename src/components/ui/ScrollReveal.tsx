@@ -5,16 +5,18 @@ import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
+  delay?: number;
 }
 
-export default function SectionReveal({
+export default function ScrollReveal({
   children,
+  delay = 0,
 }: Props) {
   return (
     <motion.div
       initial={{
         opacity: 0,
-        y: 40,
+        y: 50,
       }}
       whileInView={{
         opacity: 1,
@@ -22,10 +24,12 @@ export default function SectionReveal({
       }}
       viewport={{
         once: true,
-        amount: 0.25,
+        amount: 0.2,
       }}
       transition={{
-        duration: 0.8,
+        duration: 0.7,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
       }}
     >
       {children}

@@ -1,7 +1,7 @@
 export interface Experience {
-  company: string;
-  position: string;
   duration: string;
-  description: string;
-  technologies: string[];
+  role: string;
+  company: string;
+  summary: string;
+  current?: boolean;
 }

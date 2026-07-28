@@ -91,13 +91,13 @@ export const SITE_CONFIG = {
 
   email: "ghifar@email.com",
 
-  github: "https://github.com/yourusername",
+  github: "https://github.com/Ghifarialdhyrn",
 
-  linkedin: "https://linkedin.com/in/yourusername",
+  linkedin: "https://linkedin.com/in/ghifarialdhyrn",
 
-  instagram: "https://instagram.com/yourusername",
+  instagram: "https://www.instagram.com/ghifarialdhy",
 
-  resume: "/CV.pdf",
+  resume: "/resume/CV.pdf",
 
   copyright: `© ${new Date().getFullYear()} Ghifar. All rights reserved.`,
 } as const;

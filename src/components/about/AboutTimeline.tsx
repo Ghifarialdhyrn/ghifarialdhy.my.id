@@ -1,27 +1,27 @@
 const timeline = [
   {
     year: "2021",
-    title: "Started Computer Science",
+    title: "Started Software Engineering at UPI",
     description:
-      "Began studying Computer Science and exploring modern web development.",
+      "Began studying Software Engineering at Universitas Pendidikan Indonesia and exploring web development technologies.",
   },
   {
     year: "Feb – May 2024",
-    title: "Web Developer Intern, PT Len Industri",
+    title: "Web Developer Intern - PT Len Industri",
     description:
-      "Built an internal internship management system with dashboard, filtering, and CRUD workflow.",
+      "Developed an internal internship management system with participant management, search filtering, dashboard, and CRUD functionality.",
   },
   {
     year: "2025",
-    title: "Production Projects",
+    title: "Web Development Projects & Skill Growth",
     description:
-      "Developed Stayza Booking App and Website Kebun Taniku using React.js and Next.js.",
+      "Developed web applications such as Stayza Booking App and Kebun Taniku using React.js, Next.js, and modern web technologies.",
   },
   {
     year: "2026 — Present",
-    title: "Building Modern Web Applications",
+    title: "Software Engineering Graduate",
     description:
-      "Continuing to improve frontend engineering skills and create scalable applications.",
+      "Graduated with a GPA of 3.79 and currently focusing on building modern web applications while pursuing opportunities as a Front-End Developer.",
   },
 ];
 

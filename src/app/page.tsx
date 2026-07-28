@@ -1,12 +1,18 @@
 import About from "@/components/about/About";
+import CTA from "@/components/CTA/CTA";
+
+import Experience from "@/components/experience/Experience";
+
 import Hero from "@/components/hero/Hero";
+import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import Projects from "@/components/projects/Projects";
 import TechStack from "@/components/stack/TechStack";
 
 export default function Home() {
   return (
     <>
-      {/* Global Background */}
+      {/* Background */}
       <div className="site-background" />
       <div className="site-noise" />
 
@@ -16,7 +22,12 @@ export default function Home() {
         <Hero />
         <About />
         <TechStack />
+        <Experience />
+        <Projects />
+        <CTA />
       </main>
+
+      <Footer />
     </>
   );
 }

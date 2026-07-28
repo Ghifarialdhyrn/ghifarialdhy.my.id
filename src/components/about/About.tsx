@@ -9,24 +9,19 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-32 scroll-mt-28"
+      className="relative py-16 scroll-mt-28"
     >
       <Container>
         <ScrollReveal>
           <div>
             <p className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-zinc-500">
               <span className="h-px w-6 bg-zinc-600" />
-              About
+              About Me
             </p>
-
-            <h2 className="mt-6 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-[var(--foreground)] lg:text-5xl">
-              A front-end developer who ships production-ready products, not
-              just prototypes.
-            </h2>
           </div>
         </ScrollReveal>
 
-        <div className="mt-14 grid gap-16 lg:grid-cols-2 lg:gap-20">
+        <div className="mt-2 grid gap-16 lg:grid-cols-2 lg:gap-20">
           <ScrollReveal delay={0.15}>
             <div>
               <AboutCard />

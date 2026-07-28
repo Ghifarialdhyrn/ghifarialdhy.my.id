@@ -10,9 +10,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-
-  description: "Modern Portfolio",
+  title: "Ghifarialdhy | Fullstack Web Developer",
+  description:
+    "Portfolio of Ghifarialdhy Rahmansyah Nitikusumah, a Software Engineering graduate specializing in React.js, Next.js, TypeScript, and modern web development.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

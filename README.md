@@ -34,3 +34,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Kalender kontribusi GitHub + GitLab
+
+Tambahkan nilai berikut ke `.env.local` agar kalender kontribusi gabungan bisa memuat data akun:
+
+```env
+GITHUB_USERNAME=username-github
+GITHUB_TOKEN=github-personal-access-token
+GITLAB_USERNAME=username-gitlab
+GITLAB_URL=https://gitlab.com
+GITLAB_TOKEN=gitlab-personal-access-token
+```
+
+Buat GitHub personal access token dengan izin baca profil pengguna. Buat juga GitLab personal access token dengan scope `read_user` (atau `api`). Keduanya hanya digunakan oleh endpoint server `/api/contributions` dan tidak dikirim ke browser. `GITLAB_URL` adalah alamat instance GitLab, misalnya `https://gitlab.svara.id`. GitLab menyimpan event aktivitas hingga tiga tahun. Setelah mengisi `.env.local`, mulai ulang server Next.js.

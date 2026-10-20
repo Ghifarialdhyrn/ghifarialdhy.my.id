@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import Projects from "@/components/projects/Projects";
 import TechStack from "@/components/stack/TechStack";
+import Contributions from "@/components/contributions/Contributions";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <TechStack />
         <Experience />
         <Projects />
+        <Contributions />
         <CTA />
       </main>
 

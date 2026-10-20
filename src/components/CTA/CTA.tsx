@@ -11,7 +11,7 @@ export default function CTA() {
       className="py-20 sm:py-24 lg:py-32"
     >
       <ScrollReveal>
-        <div className="mx-auto max-w-5xl rounded-[28px] border border-zinc-800 bg-zinc-900 px-6 py-12 text-center sm:rounded-[32px] sm:px-8 sm:py-16 lg:rounded-[40px] lg:px-10 lg:py-20">
+        <div className="theme-dark-card mx-auto max-w-5xl rounded-[28px] border border-zinc-800 bg-zinc-900 px-6 py-12 text-center sm:rounded-[32px] sm:px-8 sm:py-16 lg:rounded-[40px] lg:px-10 lg:py-20">
 
           {/* Subtitle */}
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-500 sm:text-sm">

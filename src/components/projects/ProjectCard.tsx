@@ -11,7 +11,7 @@ interface Props {
 
 export default function ProjectCard({ project }: Props) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 transition-all duration-300 hover:-translate-y-2 hover:border-zinc-600">
+    <article className="theme-dark-card group flex h-full flex-col overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 transition-all duration-300 hover:-translate-y-2 hover:border-zinc-600">
       {/* Banner */}
       <div className="relative aspect-video overflow-hidden">
         <Image
@@ -31,7 +31,7 @@ export default function ProjectCard({ project }: Props) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className={`rounded-full bg-black/60 px-3 py-1 text-xs font-medium backdrop-blur-md ${
+              className={`project-tag rounded-full bg-black/60 px-3 py-1 text-xs font-medium backdrop-blur-md ${
                 tagColors[tag] ?? "text-zinc-300"
               }`}
             >

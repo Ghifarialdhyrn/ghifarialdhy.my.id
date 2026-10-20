@@ -23,6 +23,10 @@ export const NAVIGATION = [
     href: "#projects",
   },
   {
+    title: "Contribution",
+    href: "#contributions",
+  },
+  {
     title: "Contact",
     href: "#contact",
   },

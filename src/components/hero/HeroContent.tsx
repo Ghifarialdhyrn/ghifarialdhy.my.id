@@ -89,11 +89,8 @@ export default function HeroContent() {
 
     rounded-full
 
-    !bg-black
-    !text-white
-
-    dark:!bg-white
-    dark:!text-black
+    !bg-[var(--button-bg)]
+    !text-[var(--button-text)]
 
     px-7
     py-3.5
@@ -105,9 +102,7 @@ export default function HeroContent() {
     duration-300
 
     hover:-translate-y-1
-    hover:!bg-zinc-800
-
-    dark:hover:!bg-zinc-200
+    hover:!bg-[var(--button-hover)]
   "
         >
           View Projects

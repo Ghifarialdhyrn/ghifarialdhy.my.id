@@ -26,6 +26,7 @@ export default function AboutStats() {
           className="
             rounded-xl
             border
+            theme-dark-card
             border-zinc-800
             bg-zinc-900
             p-6

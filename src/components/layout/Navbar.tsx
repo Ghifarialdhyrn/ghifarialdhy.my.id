@@ -21,7 +21,7 @@ import { NAVIGATION, SITE_CONFIG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   const mounted = useMounted();
 
@@ -49,22 +49,16 @@ export default function Navbar() {
 
       setScrollProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
 
-      const sections = NAVIGATION.map((item) => {
-        const id = item.href.replace("#", "");
-        return document.getElementById(id);
-      }).filter(Boolean) as HTMLElement[];
+      const sections = NAVIGATION.map((item) => document.getElementById(item.href.replace("#", "")))
+        .filter(Boolean) as HTMLElement[];
 
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      const scrollPosition = window.scrollY + 100;
+      const passedSections = sections.filter(
+        (section) => section.getBoundingClientRect().top + window.scrollY <= scrollPosition,
+      );
+      const active = passedSections[passedSections.length - 1];
 
-      for (const section of sections) {
-        const top = section.offsetTop;
-        const bottom = top + section.offsetHeight;
-
-        if (scrollPosition >= top && scrollPosition < bottom) {
-          setActiveSection(section.id);
-          break;
-        }
-      }
+      if (active) setActiveSection(active.id);
     };
 
     handleScroll();
@@ -195,6 +189,7 @@ export default function Navbar() {
                   key={item.href}
 
                   href={item.href}
+                  onClick={() => setActiveSection(item.href.replace("#", ""))}
 
                   className={cn(
                     `
@@ -245,28 +240,15 @@ export default function Navbar() {
             lg:flex
             "
           >
-            {/* Theme Toggle
-
             <button
-              aria-label="Toggle Theme"
-
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-
-              className="
-              flex
-              h-11
-              w-11
-              items-center
-              justify-center
-              rounded-full
-              border
-              border-[var(--border)]
-              transition-all
-              hover:bg-[var(--card)]
-              "
+              type="button"
+              aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} theme`}
+              title={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} theme`}
+              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] transition-all hover:bg-[var(--card)]"
             >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-            </button> */}
+              {resolvedTheme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
 
             <Button
               href={SITE_CONFIG.resume}
@@ -331,7 +313,10 @@ export default function Navbar() {
 
                       href={item.href}
 
-                      onClick={() => setMobileOpen(false)}
+                      onClick={() => {
+                        setActiveSection(item.href.replace("#", ""));
+                        setMobileOpen(false);
+                      }}
 
                       className="
                         text-lg
@@ -346,15 +331,24 @@ export default function Navbar() {
                   ))}
                 </nav>
 
-                <div className="mt-8">
+                <div className="mt-8 flex items-center gap-3">
                   <Button
                     fullWidth
                     href={SITE_CONFIG.resume}
                     leftIcon={<Download size={18} />}
-                    className="btn-primary"
+                    className="btn-primary flex-1"
                   >
                     Download CV
                   </Button>
+                  <button
+                    type="button"
+                    aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} theme`}
+                    title={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} theme`}
+                    onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border)] transition-all hover:bg-[var(--card)]"
+                  >
+                    {resolvedTheme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                  </button>
                 </div>
 
                 <div

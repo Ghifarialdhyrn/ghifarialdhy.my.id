@@ -38,6 +38,7 @@ export default function TechCard({
   return (
     <div
       className={`
+        theme-dark-card
         group
         relative
 
@@ -65,16 +66,13 @@ export default function TechCard({
         lg:rounded-[32px]
 
         border
-        border-neutral-200
-        dark:border-neutral-800
+        border-neutral-800
 
-        bg-white/80
-        dark:bg-neutral-900/80
+        bg-neutral-900/90
 
         backdrop-blur-xl
 
-        shadow-[0_15px_35px_rgba(0,0,0,.08)]
-        dark:shadow-[0_20px_60px_rgba(255,255,255,.08)]
+        shadow-[0_20px_60px_rgba(0,0,0,.25)]
 
         transition-all
         duration-500
@@ -82,8 +80,7 @@ export default function TechCard({
         hover:-translate-y-6
         hover:z-50
 
-        hover:border-neutral-400
-        dark:hover:border-neutral-600
+        hover:border-neutral-600
 
         ${rotate[position % rotate.length]}
         ${translate[position % translate.length]}
@@ -98,12 +95,9 @@ export default function TechCard({
           opacity-0
 
           bg-gradient-to-br
-          from-black/5
-          via-black/10
+          from-white/10
+          via-white/5
           to-transparent
-
-          dark:from-white/10
-          dark:via-white/5
 
           transition-opacity
           duration-500
@@ -140,8 +134,7 @@ export default function TechCard({
             lg:w-16
             lg:h-16
 
-            text-neutral-700
-            dark:text-neutral-200
+            text-neutral-200
 
             transition-all
             duration-500
@@ -184,7 +177,7 @@ export default function TechCard({
             uppercase
             tracking-[0.25em]
 
-            text-neutral-500
+            text-neutral-400
           "
         >
           {category}
@@ -200,8 +193,7 @@ export default function TechCard({
 
             font-semibold
 
-            text-neutral-900
-            dark:text-white
+            text-white
           "
         >
           {name}
@@ -217,8 +209,7 @@ export default function TechCard({
 
             leading-relaxed
 
-            text-neutral-600
-            dark:text-neutral-400
+            text-neutral-300
           "
         >
           {description}

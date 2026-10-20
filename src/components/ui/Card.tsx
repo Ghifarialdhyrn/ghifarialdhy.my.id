@@ -13,7 +13,7 @@ export default function Card({
   return (
     <div
       className={cn(
-        "rounded-3xl border border-zinc-800 bg-zinc-900/60 backdrop-blur-md p-6 transition-all duration-300 hover:border-indigo-500/40 hover:-translate-y-1",
+        "theme-dark-card rounded-3xl border border-zinc-800 bg-zinc-900/60 backdrop-blur-md p-6 transition-all duration-300 hover:border-indigo-500/40 hover:-translate-y-1",
         className
       )}
     >

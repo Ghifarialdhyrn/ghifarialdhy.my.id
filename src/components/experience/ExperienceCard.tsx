@@ -19,7 +19,7 @@ export default function ExperienceCard({
       />
 
       {/* Card */}
-      <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 sm:p-6 lg:p-8">
+      <div className="theme-dark-card rounded-2xl border border-zinc-800 bg-zinc-900 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 sm:p-6 lg:p-8">
         {/* Header */}
         <div className="flex flex-col gap-3 sm:gap-4 md:flex-row md:items-start md:justify-between">
           <div className="min-w-0">

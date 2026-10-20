@@ -100,11 +100,10 @@ function MarqueeRow({ reverse = false }: MarqueeRowProps) {
                 rounded-full
 
                 border
-                border-neutral-200
-                dark:border-neutral-800
+                theme-dark-card
+                border-neutral-800
 
-                bg-white/80
-                dark:bg-neutral-900/70
+                bg-neutral-900/80
 
                 backdrop-blur-xl
 
@@ -129,8 +128,7 @@ function MarqueeRow({ reverse = false }: MarqueeRowProps) {
                   sm:w-[18px]
                   sm:h-[18px]
 
-                  text-neutral-600
-                  dark:text-neutral-400
+                  text-neutral-400
 
                   transition-colors
                   duration-500
@@ -142,8 +140,7 @@ function MarqueeRow({ reverse = false }: MarqueeRowProps) {
                   text-[10px]
                   sm:text-sm
 
-                  text-neutral-700
-                  dark:text-neutral-200
+                  text-neutral-200
 
                   transition-colors
                   duration-500

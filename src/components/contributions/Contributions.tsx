@@ -13,7 +13,7 @@ const levels = ["bg-zinc-800", "bg-emerald-900", "bg-emerald-700", "bg-emerald-5
 
 function ContributionCell({ day, color }: { day: Day; color: string }) {
   const [tooltip, setTooltip] = useState<{ x: number; y: number; side: "above" | "below" } | null>(null);
-  const dateLabel = new Date(`${day.date}T00:00:00`).toLocaleDateString("id-ID", {
+  const dateLabel = new Date(`${day.date}T00:00:00`).toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -33,7 +33,7 @@ function ContributionCell({ day, color }: { day: Day; color: string }) {
     <span className="group relative h-3 w-3" onMouseEnter={(event) => showTooltip(event.currentTarget)} onMouseLeave={() => setTooltip(null)}>
       <span
         tabIndex={0}
-        aria-label={`${day.count} kontribusi pada ${dateLabel}; GitHub ${day.github}, GitLab ${day.gitlab}`}
+        aria-label={`${day.count} contributions on ${dateLabel}; GitHub ${day.github}, GitLab ${day.gitlab}`}
         onFocus={(event) => showTooltip(event.currentTarget)}
         onBlur={() => setTooltip(null)}
         className={`contribution-cell block h-3 w-3 rounded-[3px] outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${color}`}
@@ -41,10 +41,10 @@ function ContributionCell({ day, color }: { day: Day; color: string }) {
       {tooltip && typeof document !== "undefined" && createPortal(
         <span
           role="tooltip"
-          className={`pointer-events-none fixed z-[9999] min-w-max -translate-x-1/2 rounded-md border border-white/10 bg-zinc-950 px-2.5 py-1.5 text-xs text-white shadow-xl ${tooltip.side === "above" ? "-translate-y-full" : ""}`}
+          className={`theme-tooltip pointer-events-none fixed z-[9999] min-w-max -translate-x-1/2 rounded-md border border-white/10 bg-zinc-950 px-2.5 py-1.5 text-xs text-white shadow-xl ${tooltip.side === "above" ? "-translate-y-full" : ""}`}
           style={{ left: tooltip.x, top: tooltip.y }}
         >
-          <span className="font-semibold">{day.count} kontribusi</span>
+          <span className="font-semibold">{day.count} contributions</span>
           <span className="block text-zinc-300">{dateLabel}</span>
           <span className="mt-1 block text-zinc-400">GitHub {day.github} / GitLab {day.gitlab}</span>
         </span>,
@@ -62,10 +62,10 @@ export default function Contributions() {
     fetch("/api/contributions")
       .then(async (response) => {
         const result = await response.json();
-        if (!response.ok) throw new Error(result.error ?? "Tidak dapat memuat kontribusi.");
+        if (!response.ok) throw new Error(result.error ?? "Unable to load contributions.");
         setData(result as Data);
       })
-      .catch((reason: unknown) => setError(reason instanceof Error ? reason.message : "Tidak dapat memuat kontribusi."));
+      .catch((reason: unknown) => setError(reason instanceof Error ? reason.message : "Unable to load contributions."));
   }, []);
 
   const days = useMemo(() => {
@@ -88,7 +88,7 @@ export default function Contributions() {
   const level = (count: number) => count === 0 ? 0 : Math.min(4, Math.ceil((count / max) * 4));
   const months = days.reduce<{ label: string; week: number }[]>((labels, day, index) => {
     const date = new Date(`${day.date}T00:00:00`);
-    if (date.getDate() === 1) labels.push({ label: date.toLocaleDateString("id-ID", { month: "short" }), week: Math.floor(index / 7) });
+    if (date.getDate() === 1) labels.push({ label: date.toLocaleDateString("en-US", { month: "short" }), week: Math.floor(index / 7) });
     return labels;
   }, []);
   const weekCount = Math.ceil(days.length / 7);
@@ -96,12 +96,12 @@ export default function Contributions() {
   return (
     <section id="contributions" className="section">
       <Container>
-        <SectionHeading eyebrow="Aktivitas" title="Kontribusi" description="Aktivitas GitHub dan GitLab dalam satu kalender." />
+        <SectionHeading eyebrow="Activity" title="Contributions" description="GitHub and GitLab activity in one calendar." />
         <div className="card overflow-hidden p-5 sm:p-8">
           <div className="mb-7 flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-2xl font-semibold">{data ? (data.totals.github + data.totals.gitlab).toLocaleString("id-ID") : "—"}</p>
-              <p className="text-sm text-muted">kontribusi selama setahun terakhir</p>
+              <p className="text-2xl font-semibold">{data ? (data.totals.github + data.totals.gitlab).toLocaleString("en-US") : "—"}</p>
+              <p className="text-sm text-muted">contributions in the past year</p>
             </div>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
               <span className="flex items-center gap-2"><IconBrandGithub size={17} /> GitHub {data && `· ${data.totals.github}`}</span>
@@ -109,7 +109,7 @@ export default function Contributions() {
             </div>
           </div>
 
-          {error ? <p className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4 text-sm text-amber-200">{error}</p> : !data ? <div className="h-28 animate-pulse rounded-xl bg-white/5" aria-label="Memuat kalender kontribusi" /> : (
+          {error ? <p className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4 text-sm text-amber-200">{error}</p> : !data ? <div className="h-28 animate-pulse rounded-xl bg-white/5" aria-label="Loading contributions calendar" /> : (
             <>
               <div className="overflow-x-auto pb-2">
                 <div className="mb-2 grid w-max grid-rows-1 gap-1 text-[11px] leading-4 text-muted" style={{ gridTemplateColumns: `repeat(${weekCount}, 12px)` }}>
@@ -117,7 +117,7 @@ export default function Contributions() {
                     <span key={`${month.label}-${month.week}`} className="whitespace-nowrap" style={{ gridColumnStart: month.week + 1 }}>{month.label}</span>
                   ))}
                 </div>
-                <div className="grid w-max grid-flow-col grid-rows-7 gap-1" aria-label="Kalender kontribusi gabungan">
+                <div className="grid w-max grid-flow-col grid-rows-7 gap-1" aria-label="Combined contributions calendar">
                   {days.map((day) => (
                     <ContributionCell key={day.date} day={day} color={levels[level(day.count)]} />
                   ))}
@@ -125,9 +125,9 @@ export default function Contributions() {
               </div>
               <div className="mt-4 flex items-center justify-between gap-4 text-xs text-muted">
                 <span>{data.usernames.github} · {data.usernames.gitlab}</span>
-                <span className="flex items-center gap-1.5">Sedikit <span className="h-3 w-3 rounded-[3px] bg-zinc-800" />{levels.slice(1).map((color) => <span key={color} className={`h-3 w-3 rounded-[3px] ${color}`} />)} Banyak</span>
+                <span className="flex items-center gap-1.5">Less <span className="h-3 w-3 rounded-[3px] bg-zinc-800" />{levels.slice(1).map((color) => <span key={color} className={`h-3 w-3 rounded-[3px] ${color}`} />)} More</span>
               </div>
-              <p className="mt-3 text-xs text-muted">Data GitLab diambil dari event aktivitas akun; GitLab menyimpan event hingga tiga tahun.</p>
+              <p className="mt-3 text-xs text-muted">GitLab data comes from account activity events, which are retained for up to three years.</p>
             </>
           )}
         </div>

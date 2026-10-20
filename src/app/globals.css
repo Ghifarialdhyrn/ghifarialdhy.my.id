@@ -69,6 +69,83 @@
 
 }
 
+/* Keep shared copy readable when the light theme is active. */
+.light .text-white,
+.light .text-zinc-100,
+.light .text-zinc-200,
+.light .text-neutral-700,
+.light .text-neutral-900 {
+  color: var(--foreground) !important;
+}
+
+.light .text-zinc-300,
+.light .text-zinc-400,
+.light .text-zinc-500,
+.light .text-zinc-600,
+.light .text-gray-300,
+.light .text-neutral-400,
+.light .text-neutral-500,
+.light .text-neutral-600 {
+  color: var(--muted) !important;
+}
+
+.light .hover\:text-white:hover {
+  color: var(--foreground) !important;
+}
+
+.light .text-indigo-400 {
+  color: #4f46e5 !important;
+}
+
+.light .theme-tooltip {
+  color: #fff !important;
+}
+
+.light .theme-tooltip .text-zinc-300 {
+  color: #d4d4d8 !important;
+}
+
+.light .theme-tooltip .text-zinc-400 {
+  color: #a1a1aa !important;
+}
+
+.light .project-tag.text-white {
+  color: #fff !important;
+}
+
+.light .theme-dark-card {
+  color: #fff !important;
+}
+
+.light .theme-dark-card .text-white {
+  color: #fff !important;
+}
+
+.light .theme-dark-card .text-zinc-300 {
+  color: #d4d4d8 !important;
+}
+
+.light .theme-dark-card .text-zinc-400 {
+  color: #a1a1aa !important;
+}
+
+.light .theme-dark-card .text-zinc-500 {
+  color: #a1a1aa !important;
+}
+
+.light .theme-dark-card .text-neutral-200 {
+  color: #e5e7eb !important;
+}
+
+.light .theme-dark-card .text-neutral-300 {
+  color: #d4d4d8 !important;
+}
+
+.light .theme-dark-card .text-neutral-400,
+.light .theme-dark-card .text-neutral-500 {
+  color: #a1a1aa !important;
+}
+
 
 
 

@@ -16,10 +16,10 @@ async function getGitHubContributions(username: string, token: string) {
     }),
     next: { revalidate: 3600 },
   });
-  if (!response.ok) throw new Error("GitHub API tidak dapat mengambil data.");
+  if (!response.ok) throw new Error("Unable to fetch data from the GitHub API.");
   const result = await response.json();
   const calendar = result.data?.user?.contributionsCollection?.contributionCalendar;
-  if (!calendar) throw new Error("Akun GitHub tidak ditemukan atau token tidak memiliki akses.");
+  if (!calendar) throw new Error("GitHub account not found or token lacks access.");
   return {
     total: calendar.totalContributions as number,
     days: (calendar.weeks as { contributionDays: { date: string; contributionCount: number }[] }[])
@@ -34,9 +34,9 @@ async function getGitLabContributions(username: string, gitlabUrl: string, token
   const since = from.toISOString();
   const apiUrl = new URL("/api/v4/", gitlabUrl);
   const userResponse = await fetch(new URL(`users?username=${encodeURIComponent(username)}`, apiUrl), { next: { revalidate: 3600 } });
-  if (!userResponse.ok) throw new Error("GitLab API tidak dapat mengambil profil.");
+  if (!userResponse.ok) throw new Error("Unable to fetch the profile from the GitLab API.");
   const users = (await userResponse.json()) as { id: number }[];
-  if (!users[0]) throw new Error("Akun GitLab tidak ditemukan.");
+  if (!users[0]) throw new Error("GitLab account not found.");
 
   const counts = new Map<string, number>();
   let total = 0;
@@ -48,7 +48,7 @@ async function getGitLabContributions(username: string, gitlabUrl: string, token
       headers: { "PRIVATE-TOKEN": token },
       next: { revalidate: 3600 },
     });
-    if (!response.ok) throw new Error("GitLab API tidak dapat mengambil aktivitas.");
+    if (!response.ok) throw new Error("Unable to fetch activity from the GitLab API.");
     const events = (await response.json()) as { created_at: string }[];
     for (const event of events) {
       const date = event.created_at.slice(0, 10);
@@ -67,7 +67,7 @@ export async function GET() {
   const gitlabToken = process.env.GITLAB_TOKEN;
   const githubToken = process.env.GITHUB_TOKEN;
   if (!githubUsername || !gitlabUsername || !githubToken || !gitlabToken) {
-    return NextResponse.json({ error: "Lengkapi GITHUB_USERNAME, GITHUB_TOKEN, GITLAB_USERNAME, GITLAB_URL, dan GITLAB_TOKEN di environment situs." }, { status: 503 });
+    return NextResponse.json({ error: "Set GITHUB_USERNAME, GITHUB_TOKEN, GITLAB_USERNAME, GITLAB_URL, and GITLAB_TOKEN in the site environment." }, { status: 503 });
   }
 
   try {
@@ -89,7 +89,7 @@ export async function GET() {
     const days: (ContributionDay & { github: number; gitlab: number })[] = [...merged].map(([date, counts]) => ({ date, github: counts.github, gitlab: counts.gitlab, count: counts.github + counts.gitlab }));
     return NextResponse.json({ days, totals: { github: github.total, gitlab: gitlab.total }, usernames: { github: githubUsername, gitlab: gitlabUsername } });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Gagal memuat kontribusi.";
+    const message = error instanceof Error ? error.message : "Unable to load contributions.";
     return NextResponse.json({ error: message }, { status: 502 });
   }
 }

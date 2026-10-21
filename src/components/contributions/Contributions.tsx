@@ -125,7 +125,7 @@ export default function Contributions() {
               </div>
               <div className="mt-4 flex items-center justify-between gap-4 text-xs text-muted">
                 <span>{data.usernames.github} · {data.usernames.gitlab}</span>
-                <span className="flex items-center gap-1.5">Less <span className="h-3 w-3 rounded-[3px] bg-zinc-800" />{levels.slice(1).map((color) => <span key={color} className={`h-3 w-3 rounded-[3px] ${color}`} />)} More</span>
+                <span className="flex items-center gap-1.5">Less <span className="contribution-empty-swatch h-3 w-3 rounded-[3px] bg-zinc-800" />{levels.slice(1).map((color) => <span key={color} className={`h-3 w-3 rounded-[3px] ${color}`} />)} More</span>
               </div>
               <p className="mt-3 text-xs text-muted">GitLab data comes from account activity events, which are retained for up to three years.</p>
             </>

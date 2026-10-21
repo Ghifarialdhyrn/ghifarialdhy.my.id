@@ -562,6 +562,16 @@ svg {
   transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
 }
 
+.light .contribution-cell {
+  border: 1px solid #000;
+}
+
+.light .contribution-cell.bg-zinc-800,
+.light .contribution-empty-swatch {
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
 .contribution-cell:hover,
 .contribution-cell:focus-visible {
   position: relative;

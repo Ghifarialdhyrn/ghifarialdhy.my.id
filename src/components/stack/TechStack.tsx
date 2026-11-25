@@ -85,7 +85,9 @@ export default function TechStack() {
             "
           >
             {stackCards.map((tech, index) => (
-              <TechCard key={tech.name} {...tech} position={index} />
+              <ScrollReveal key={tech.name} delay={index * 0.12} y={35}>
+                <TechCard {...tech} position={index} />
+              </ScrollReveal>
             ))}
           </div>
         </ScrollReveal>

@@ -1,40 +1,110 @@
+
 import { experiences } from "@/data/experience";
+
 import ExperienceCard from "./ExperienceCard";
 import ScrollReveal from "../ui/ScrollReveal";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 sm:py-24 lg:py-28">
-      <ScrollReveal>
-        <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
-          {/* Heading */}
-          <div className="mb-12 sm:mb-16">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500 sm:text-sm">
-              Web Development
-            </span>
+    <section
+      id="experience"
+      className="
+        relative
+        py-24
+        sm:py-28
+        lg:py-36
+        scroll-mt-28
+      "
+    >
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
 
-            <div className="mt-4 flex items-center gap-3 sm:gap-4">
-              <span className="h-2 w-2 rounded-full bg-white" />
+          {/* Pinned Heading */}
+          <div className="lg:sticky lg:top-32 lg:h-fit">
+            <ScrollReveal>
+              <span className="
+                font-mono
+                text-xs
+                uppercase
+                tracking-[0.2em]
+                text-zinc-500
+              ">
+                Web Development
+              </span>
 
-              <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-                Experience
-              </h2>
-            </div>
+              <div className="mt-5 flex items-center gap-3">
+                <span className="
+                  h-2
+                  w-2
+                  rounded-full
+                  bg-emerald-400
+                  shadow-[0_0_12px_rgba(52,211,153,0.7)]
+                " />
+
+                <h2 className="
+                  text-4xl
+                  font-bold
+                  tracking-tight
+                  sm:text-5xl
+                  lg:text-6xl
+                ">
+                  Experience
+                </h2>
+              </div>
+
+              <p className="
+                mt-6
+                max-w-sm
+                text-sm
+                leading-7
+                text-zinc-500
+                sm:text-base
+              ">
+                My professional journey, where I turn
+                ideas into meaningful digital experiences
+                through development and collaboration.
+              </p>
+
+              <div className="
+                mt-8
+                hidden
+                h-px
+                w-24
+                bg-gradient-to-r
+                from-emerald-400
+                to-transparent
+                lg:block
+              " />
+            </ScrollReveal>
           </div>
 
-          <ScrollReveal>
-            {/* Timeline */}
-            <div className="relative ml-1 border-l border-zinc-800 pl-6 text-justify sm:ml-2 sm:pl-8 lg:pl-10 space-y-6 sm:space-y-8">
-              {experiences.map((experience) => (
+          {/* Moving Timeline */}
+          <div className="
+            relative
+            ml-1
+            space-y-8
+            border-l
+            border-zinc-800
+            pl-6
+            sm:ml-2
+            sm:pl-8
+            lg:pl-10
+          ">
+            {experiences.map((experience, index) => (
+              <ScrollReveal
+                key={`${experience.role}-${experience.company}`}
+                delay={index * 0.12}
+                y={45}
+              >
                 <ExperienceCard
-                  key={`${experience.role}-${experience.company}`}
                   experience={experience}
                 />
-              ))}
-            </div>
-          </ScrollReveal>
+              </ScrollReveal>
+            ))}
+          </div>
+
         </div>
-      </ScrollReveal>
+      </div>
     </section>
   );
 }
